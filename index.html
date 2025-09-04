@@ -72,6 +72,52 @@
             width: 100%;
             display: block;
         }
+
+        /* ====== Ebook ====== */
+        .ebook-article {
+            text-align: left;
+        }
+
+        .ebook-article .intro {
+            color: #555;
+            max-width: 820px;
+            margin: 0 auto 1rem auto;
+        }
+
+        .ebook-article .toc a {
+            text-decoration: none;
+        }
+
+        .ebook-article details {
+            background: #fff;
+            border: 1px solid #e9ecef;
+            border-radius: 14px;
+            padding: .75rem 1rem;
+            margin-bottom: .75rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .03);
+        }
+
+        .ebook-article summary {
+            cursor: pointer;
+            font-weight: 700;
+            list-style: none;
+        }
+
+        .ebook-article summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .ebook-article .practice {
+            background: #fff8e1;
+            border: 1px dashed #ffda6a;
+            border-radius: 12px;
+            padding: .75rem 1rem;
+            margin-top: .5rem;
+        }
+
+        .ebook-article h3 {
+            font-weight: 800;
+        }
     </style>
 </head>
 
@@ -248,13 +294,217 @@
 
     <!-- EBOOK -->
     <section id="ebook" class="py-5 bg-light">
-        <div class="container text-center">
-            <h2 class="fw-bold mb-3">Ebook</h2>
-            <p class="mb-4">Incluye tu ebook de apoyo para reforzar el entrenamiento. Sube el PDF a tu hosting o Drive y
-                coloca el enlace.</p>
-            <a href="ebook.pdf" class="btn btn-warning btn-lg" download>Descargar PDF</a>
+        <div class="container">
+            <div class="text-center mb-3">
+                <h2 class="fw-bold">15 Leyes Espirituales para la Abundancia <span class="d-block small">Método Yo
+                        Soy</span></h2>
+                <p class="intro mx-auto">
+                    Este ebook reúne principios espirituales universales que, aplicados desde la conciencia elevada,
+                    permiten sanar, crecer y abrirse a la abundancia. Cada ley trae una práctica diaria para integrarla
+                    en
+                    tu vida.
+                </p>
+            </div>
+
+            <!-- Índice -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-9">
+                    <div class="toc mb-4">
+                        <div class="row g-2">
+                            <div class="col-6 col-md-4"><a href="#ley-evolucion"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley de la Evolución</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-correspondencia"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley de la Correspondencia</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-causa-efecto"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley de Causa y Efecto</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-vibracion"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley de Vibración</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-orden"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley
+                                    del Orden</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-compensacion"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley de la Compensación</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-saturacion"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley de la Saturación de Sufrimiento</a>
+                            </div>
+                            <div class="col-6 col-md-4"><a href="#ley-oportunidad"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley de la Oportunidad</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-advertencia"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley de la Advertencia</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-desapego"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley del Desapego</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-intencion"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley de la Intención</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-amor"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley
+                                    del Amor</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-perdon"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley
+                                    del Perdón</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-unidad"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley
+                                    de la Unidad</a></div>
+                            <div class="col-6 col-md-4"><a href="#ley-presencia"
+                                    class="btn btn-outline-dark w-100 btn-sm">Ley de la Presencia</a></div>
+                        </div>
+                    </div>
+
+                    <!-- Contenido -->
+                    <article class="ebook-article">
+
+                        <details id="ley-evolucion" open>
+                            <summary>Ley de la Evolución</summary>
+                            <p class="mb-2">Todo lo que ocurre impulsa la evolución de la conciencia. Los desafíos no
+                                son
+                                castigos, son oportunidades de crecimiento.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Hoy, ante cada dificultad, repite:
+                                “Esto
+                                también es para mi evolución”. Observa qué aprendizaje trae.</div>
+                        </details>
+
+                        <details id="ley-correspondencia">
+                            <summary>Ley de la Correspondencia</summary>
+                            <p class="mb-2">Lo que llevas dentro se refleja fuera. Cada persona y situación es un espejo
+                                de
+                                tu propio estado interior.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Haz una lista de tres situaciones
+                                que te
+                                incomoden hoy. Pregúntate: “¿Qué parte de mí se refleja aquí?”.</div>
+                        </details>
+
+                        <details id="ley-causa-efecto">
+                            <summary>Ley de Causa y Efecto</summary>
+                            <p class="mb-2">Toda acción, pensamiento y emoción generan un efecto. No existen castigos,
+                                solo
+                                consecuencias.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Antes de dormir, revisa tu día y
+                                observa
+                                qué efectos tuvieron tus pensamientos y acciones.</div>
+                        </details>
+
+                        <details id="ley-vibracion">
+                            <summary>Ley de Vibración</summary>
+                            <p class="mb-2">Todo es energía y vibración. Lo semejante atrae a lo semejante.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Practica elevar tu vibración con 5
+                                minutos de gratitud consciente en la mañana.</div>
+                        </details>
+
+                        <details id="ley-orden">
+                            <summary>Ley del Orden</summary>
+                            <p class="mb-2">Todo tiene un lugar en la creación. El desorden externo refleja desorden
+                                interno.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Organiza un espacio pequeño de tu
+                                casa y
+                                observa cómo cambia tu estado interno.</div>
+                        </details>
+
+                        <details id="ley-compensacion">
+                            <summary>Ley de la Compensación</summary>
+                            <p class="mb-2">Todo servicio y aporte recibido merece equilibrio. La abundancia fluye
+                                cuando
+                                hay dar y recibir.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Haz un acto de dar sin esperar nada
+                                a
+                                cambio hoy, aunque sea una sonrisa sincera.</div>
+                        </details>
+
+                        <details id="ley-saturacion">
+                            <summary>Ley de la Saturación de Sufrimiento</summary>
+                            <p class="mb-2">Cuando no aprendemos por conciencia, la vida repite experiencias hasta que
+                                el
+                                dolor nos impulsa a cambiar.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Observa una situación repetitiva en
+                                tu
+                                vida y escribe qué aprendizaje quizás estás resistiendo.</div>
+                        </details>
+
+                        <details id="ley-oportunidad">
+                            <summary>Ley de la Oportunidad</summary>
+                            <p class="mb-2">Cada situación trae una oportunidad de transformación.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Pregúntate hoy: “¿Qué oportunidad me
+                                ofrece esto que estoy viviendo?”.</div>
+                        </details>
+
+                        <details id="ley-advertencia">
+                            <summary>Ley de la Advertencia (Gerardo Schmedling)</summary>
+                            <p class="mb-2">La vida nos envía señales y advertencias antes de grandes lecciones. Si no
+                                escuchamos, la experiencia se intensifica.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Haz memoria: ¿qué advertencias estás
+                                recibiendo en tu vida? Escríbelas y reflexiona.</div>
+                        </details>
+
+                        <details id="ley-desapego">
+                            <summary>Ley del Desapego</summary>
+                            <p class="mb-2">La verdadera abundancia fluye cuando no dependemos del resultado. Amar sin
+                                poseer, actuar sin esperar.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Elige hoy soltar el control de un
+                                resultado y confía: “Que se haga tu voluntad, no la mía”.</div>
+                        </details>
+
+                        <details id="ley-intencion">
+                            <summary>Ley de la Intención</summary>
+                            <p class="mb-2">Todo lo creado comenzó con una intención clara. La intención consciente
+                                dirige
+                                la energía.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Declara una intención para tu día:
+                                “Hoy
+                                elijo vivir en paz y abundancia”.</div>
+                        </details>
+
+                        <details id="ley-amor">
+                            <summary>Ley del Amor</summary>
+                            <p class="mb-2">El amor es la fuerza más elevada y transformadora. Todo lo que nace del amor
+                                genera expansión.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Elige amar a alguien que ayer
+                                juzgaste.
+                                Repite: “Te libero, te bendigo, eres libre”.</div>
+                        </details>
+
+                        <details id="ley-perdon">
+                            <summary>Ley del Perdón</summary>
+                            <p class="mb-2">Perdonar es liberar el pasado y elegir ver con nuevos ojos.</p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Piensa en una situación pendiente y
+                                di:
+                                “Te perdono, me perdono, soy libre”.</div>
+                        </details>
+
+                        <details id="ley-unidad">
+                            <summary>Ley de la Unidad</summary>
+                            <p class="mb-2">Todos somos uno en el Espíritu. Lo que das al otro, te lo das a ti mismo.
+                            </p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Hoy reconoce a un desconocido como
+                                tu
+                                hermano y deséale silenciosamente bienestar.</div>
+                        </details>
+
+                        <details id="ley-presencia">
+                            <summary>Ley de la Presencia</summary>
+                            <p class="mb-2">La vida solo ocurre aquí y ahora. El presente es la puerta a la abundancia.
+                            </p>
+                            <div class="practice"><strong>Práctica diaria:</strong> Dedica 5 minutos a respirar
+                                conscientemente y traer tu mente al instante presente.</div>
+                        </details>
+
+                        <div class="mt-4">
+                            <h3 class="h5">Conclusión</h3>
+                            <p>Estas leyes espirituales son caminos de liberación. El Método Yo Soy propone integrarlas
+                                desde el amor, pasando de la herida al reconocimiento de que somos Hijos de Dios,
+                                abundantes
+                                por naturaleza. La clave está en practicarlas cada día hasta que se vuelvan parte de tu
+                                ser.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- (Opcional) Botones -->
+                    <div class="text-center mt-4 d-flex flex-wrap gap-2 justify-content-center">
+                        <a class="btn btn-warning" href="#inicio">Volver al inicio</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
+
 
     <!-- FOOTER -->
     <footer>
