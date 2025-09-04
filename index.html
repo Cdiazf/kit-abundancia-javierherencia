@@ -5,11 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Abundancia Infinita</title>
-    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #f8f9fa;
+        }
+
+        section {
+            scroll-margin-top: 80px;
         }
 
         .hero {
@@ -18,30 +21,30 @@
             display: flex;
             align-items: center;
             padding: 2rem;
-            color: white;
+            color: #fff;
         }
 
         .hero .overlay {
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, .6);
             padding: 2rem;
             border-radius: 10px;
         }
 
         .highlight {
             color: #f9c404;
-            font-weight: bold;
+            font-weight: 700;
         }
 
         .quick-access {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, .95);
             border-radius: 20px;
             padding: 2rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
         }
 
         .quick-access button {
-            margin-bottom: 10px;
             width: 100%;
+            margin-bottom: 10px;
         }
 
         footer {
@@ -52,21 +55,29 @@
             margin-top: 3rem;
         }
 
-        iframe {
+        /* Bloque reproductor con fallback */
+        .player-block .ratio {
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
         }
 
-        /* Para que el scroll a secciones no quede tapado por el navbar fijo */
-        section {
-            scroll-margin-top: 80px;
+        .player-fallback {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+        }
+
+        .player-fallback img {
+            width: 100%;
+            display: block;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Navbar -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold" href="#">JH <span class="highlight">Abundancia Infinita</span></a>
@@ -79,40 +90,30 @@
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
                     <li class="nav-item"><a class="nav-link" href="#masterclass">MasterClass</a></li>
-
-                    <!-- Enlace externo a Canva: abre en nueva pestaña -->
                     <li class="nav-item">
                         <a class="nav-link"
                             href="https://www.canva.com/design/DAGx2KCd4_w/PwTINnmzxsM3X_QidoDYWw/view?utm_content=DAGx2KCd4_w&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=h67bcfb8725"
-                            target="_blank" rel="noopener">
-                            Meditaciones
-                        </a>
+                            target="_blank" rel="noopener">Meditaciones</a>
                     </li>
-
-                    <!-- Nueva sección interna para Canva embebido -->
                     <li class="nav-item"><a class="nav-link" href="#diapositivas">Diapositivas</a></li>
-
                     <li class="nav-item"><a class="nav-link" href="#ebook">Ebook</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Hero -->
-    <section id="inicio" class="hero d-flex">
+    <!-- HERO -->
+    <section id="inicio" class="hero">
         <div class="container">
             <div class="row align-items-center">
-                <!-- Texto -->
                 <div class="col-lg-7 mb-4">
                     <div class="overlay">
                         <span class="badge bg-warning text-dark mb-3">EVENTO GRATUITO PRESENCIAL</span>
-                        <h1 class="display-5 fw-bold">
-                            Conecta con tu esencia y logra <span class="highlight">abundancia</span>
-                        </h1>
-                        <p class="lead">
-                            Pack de bono por tu compromiso y asistencia al evento presencial. Descubre
-                            herramientas prácticas para elevar tu conciencia y resultados financieros.
-                        </p>
+                        <h1 class="display-5 fw-bold">Conecta con tu esencia y logra <span
+                                class="highlight">abundancia</span></h1>
+                        <p class="lead">Pack de bono por tu compromiso y asistencia al evento presencial. Descubre
+                            herramientas
+                            prácticas para elevar tu conciencia y resultados financieros.</p>
                         <div class="d-flex gap-3">
                             <a href="#masterclass" class="btn btn-warning btn-lg">Ver MasterClass</a>
                             <a href="#meditaciones" class="btn btn-outline-light btn-lg">Ir a Meditaciones</a>
@@ -120,7 +121,6 @@
                     </div>
                 </div>
 
-                <!-- Accesos rápidos -->
                 <div class="col-lg-5">
                     <div class="quick-access">
                         <h5 class="text-center mb-3 fw-bold">ACCESOS RÁPIDOS</h5>
@@ -139,44 +139,85 @@
         </div>
     </section>
 
-    <!-- MasterClass -->
+    <!-- MASTERCLASS (con fallback) -->
     <section id="masterclass" class="py-5 bg-light">
         <div class="container text-center">
             <h2 class="fw-bold mb-4">MasterClass</h2>
-            <div class="ratio ratio-16x9">
-                <iframe src="https://www.youtube.com/embed/q9-R_lG3TpA" title="MasterClass" loading="lazy"
-                    allowfullscreen></iframe>
+
+            <div class="player-block">
+                <!-- Player -->
+                <div class="ratio ratio-16x9" id="mc-player-wrap">
+                    <div id="mc-player"></div>
+                </div>
+                <!-- Fallback (imagen + botón) -->
+                <div id="mc-fallback" class="player-fallback d-none">
+                    <img src="https://img.youtube.com/vi/q9-R_lG3TpA/hqdefault.jpg" alt="MasterClass">
+                    <div class="mt-3">
+                        <a class="btn btn-outline-dark" href="https://www.youtube.com/watch?v=q9-R_lG3TpA"
+                            target="_blank" rel="noopener">
+                            Ver en YouTube
+                        </a>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
 
-    <!-- Meditaciones -->
+    <!-- MEDITACIONES (con fallback) -->
     <section id="meditaciones" class="py-5">
         <div class="container">
             <h2 class="fw-bold text-center mb-5">Meditaciones</h2>
+
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="card p-3 h-100">
                         <h5 class="text-center mb-3">Meditación: Sana tu relación con el dinero</h5>
-                        <div class="ratio ratio-16x9">
-                            <iframe src="https://www.youtube.com/embed/ap--P5Org0E" title="Meditación dinero"
-                                loading="lazy" allowfullscreen></iframe>
+
+                        <div class="player-block">
+                            <div class="ratio ratio-16x9" id="m1-player-wrap">
+                                <div id="m1-player"></div>
+                            </div>
+                            <div id="m1-fallback" class="player-fallback d-none">
+                                <img src="https://img.youtube.com/vi/ap--P5Org0E/hqdefault.jpg"
+                                    alt="Sana tu relación con el dinero">
+                                <div class="mt-3 text-center">
+                                    <a class="btn btn-outline-dark" href="https://www.youtube.com/watch?v=ap--P5Org0E"
+                                        target="_blank" rel="noopener">
+                                        Ver en YouTube
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
                 <div class="col-md-6">
                     <div class="card p-3 h-100">
                         <h5 class="text-center mb-3">Meditación: Mañanas de poder</h5>
-                        <div class="ratio ratio-16x9">
-                            <iframe src="https://www.youtube.com/embed/yHISTPLyHt4?start=46" title="Mañanas de poder"
-                                loading="lazy" allowfullscreen></iframe>
+
+                        <div class="player-block">
+                            <div class="ratio ratio-16x9" id="m2-player-wrap">
+                                <div id="m2-player"></div>
+                            </div>
+                            <div id="m2-fallback" class="player-fallback d-none">
+                                <img src="https://img.youtube.com/vi/yHISTPLyHt4/hqdefault.jpg" alt="Mañanas de poder">
+                                <div class="mt-3 text-center">
+                                    <a class="btn btn-outline-dark"
+                                        href="https://www.youtube.com/watch?v=yHISTPLyHt4&t=46s" target="_blank"
+                                        rel="noopener">
+                                        Ver en YouTube
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
 
-            <!-- Botón externo alternativo a Canva (opcional) -->
+            <!-- Enlace externo alternativo a Canva -->
             <div class="text-center mt-4">
                 <a class="btn btn-outline-dark"
                     href="https://www.canva.com/design/DAGx2KCd4_w/PwTINnmzxsM3X_QidoDYWw/view?utm_content=DAGx2KCd4_w&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=h67bcfb8725"
@@ -187,65 +228,97 @@
         </div>
     </section>
 
-    <!-- Diapositivas (Canva embed) -->
+    <!-- DIAPOSITIVAS (Canva embed) -->
     <section id="diapositivas" class="py-5 bg-light">
         <div class="container text-center">
             <h2 class="fw-bold mb-4">Diapositivas</h2>
 
             <div class="ratio ratio-16x9">
-                <!-- IMPORTANTE: usa el endpoint de "embed" para que cargue en iframe -->
                 <iframe src="https://www.canva.com/design/DAGx2KCd4_w/view?embed" title="Diapositivas Canva"
-                    loading="lazy" allowfullscreen>
-                </iframe>
+                    loading="lazy" allowfullscreen></iframe>
             </div>
 
-            <!-- Enlace de respaldo en nueva pestaña -->
             <p class="mt-3">
                 <a class="btn btn-warning"
                     href="https://www.canva.com/design/DAGx2KCd4_w/PwTINnmzxsM3X_QidoDYWw/view?utm_content=DAGx2KCd4_w&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=uniquelinks&amp;utlId=h67bcfb8725"
-                    target="_blank" rel="noopener">
-                    Abrir en Canva
-                </a>
+                    target="_blank" rel="noopener">Abrir en Canva</a>
             </p>
         </div>
     </section>
 
-    <!-- Ebook -->
+    <!-- EBOOK -->
     <section id="ebook" class="py-5 bg-light">
         <div class="container text-center">
             <h2 class="fw-bold mb-3">Ebook</h2>
-            <p class="mb-4">
-                Incluye tu ebook de apoyo para reforzar el entrenamiento. Sube el PDF a tu hosting o Drive y
-                coloca el enlace.
-            </p>
+            <p class="mb-4">Incluye tu ebook de apoyo para reforzar el entrenamiento. Sube el PDF a tu hosting o Drive y
+                coloca el enlace.</p>
             <a href="ebook.pdf" class="btn btn-warning btn-lg" download>Descargar PDF</a>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer>
         <p class="mb-0">© 2025 Abundancia Infinita - Todos los derechos reservados</p>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- YouTube Iframe API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script>
-        // Intercepta SOLO enlaces internos (anclas) para scroll suave.
+        // Cerrar menú móvil al hacer clic en anclas internas (sin bloquear enlaces externos)
         document.querySelectorAll('a.nav-link[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 const id = a.getAttribute('href');
                 if (id.length > 1) {
                     e.preventDefault();
                     document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-                    // Cerrar menú colapsado en móvil (usa el ID correcto del collapse)
                     const navCollapse = document.getElementById('navbarNav');
-                    if (navCollapse?.classList.contains('show')) {
-                        new bootstrap.Collapse(navCollapse).hide();
-                    }
+                    if (navCollapse?.classList.contains('show')) new bootstrap.Collapse(navCollapse).hide();
                 }
             });
         });
+
+        // ——— YouTube players con fallback ———
+        const YT_CONFIGS = [
+            { playerId: 'mc-player', wrapId: 'mc-player-wrap', fbId: 'mc-fallback', videoId: 'q9-R_lG3TpA', start: 0 },
+            { playerId: 'm1-player', wrapId: 'm1-player-wrap', fbId: 'm1-fallback', videoId: 'ap--P5Org0E', start: 0 },
+            { playerId: 'm2-player', wrapId: 'm2-player-wrap', fbId: 'm2-fallback', videoId: 'yHISTPLyHt4', start: 46 },
+        ];
+
+        function showFallback(fbId, wrapId) {
+            const fb = document.getElementById(fbId);
+            const wrap = document.getElementById(wrapId);
+            if (wrap) wrap.classList.add('d-none');
+            if (fb) fb.classList.remove('d-none');
+        }
+
+        function onPlayerError(e, conf) {
+            // 150 / 101 → el propietario bloqueó el embed
+            if (e.data === 150 || e.data === 101) {
+                showFallback(conf.fbId, conf.wrapId);
+            }
+        }
+
+        // La API llamará a esta función global cuando esté lista
+        window.onYouTubeIframeAPIReady = function () {
+            YT_CONFIGS.forEach(conf => {
+                // Si el contenedor no está en la página, salta (por si eliminaste alguno)
+                if (!document.getElementById(conf.playerId)) return;
+
+                new YT.Player(conf.playerId, {
+                    videoId: conf.videoId,
+                    playerVars: {
+                        rel: 0, modestbranding: 1, playsinline: 1,
+                        start: conf.start || 0,
+                    },
+                    events: {
+                        onError: (e) => onPlayerError(e, conf)
+                    }
+                });
+            });
+        };
     </script>
 </body>
 
